@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "net.benbenng.wwwapi", "net.benbenng.wwwapi\net.benbenng.wwwapi.csproj", "{2477F5E1-4641-42AA-BE39-0A2AA99FB998}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2477F5E1-4641-42AA-BE39-0A2AA99FB998}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2477F5E1-4641-42AA-BE39-0A2AA99FB998}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2477F5E1-4641-42AA-BE39-0A2AA99FB998}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2477F5E1-4641-42AA-BE39-0A2AA99FB998}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AEED3DE4-843F-4C0C-B8B1-E861E625356F}
+	EndGlobalSection
+EndGlobal
