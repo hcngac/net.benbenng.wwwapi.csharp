@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace net.benbenng.wwwapi
+namespace net.benbenng.wwwapi.Models
 {
     public class Tag
     {

@@ -5,62 +5,63 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using net.benbenng.wwwapi;
 using net.benbenng.wwwapi.Models;
 
 namespace net.benbenng.wwwapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ContentsController : ControllerBase
+    public class UsersController : ControllerBase
     {
-        private readonly SiteDbContext _context;
+        private readonly AccountDbContext _context;
 
-        public ContentsController(SiteDbContext context)
+        public UsersController(AccountDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Contents
+        // GET: api/Users
         [HttpGet]
-        public IEnumerable<Content> GetContents()
+        public IEnumerable<User> GetUser()
         {
-            return _context.Contents;
+            return _context.Users;
         }
 
-        // GET: api/Contents/5
+        // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetContent([FromRoute] int id)
+        public async Task<IActionResult> GetUser([FromRoute] string id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var content = await _context.Contents.FindAsync(id);
+            var user = await _context.Users.FindAsync(id);
 
-            if (content == null)
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return Ok(content);
+            return Ok(user);
         }
 
-        // PUT: api/Contents/5
+        // PUT: api/Users/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutContent([FromRoute] int id, [FromBody] Content content)
+        public async Task<IActionResult> PutUser([FromRoute] string id, [FromBody] User user)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != content.ContentId)
+            if (id != user.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(content).State = EntityState.Modified;
+            _context.Entry(user).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +69,7 @@ namespace net.benbenng.wwwapi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ContentExists(id))
+                if (!UserExists(id))
                 {
                     return NotFound();
                 }
@@ -81,45 +82,45 @@ namespace net.benbenng.wwwapi.Controllers
             return NoContent();
         }
 
-        // POST: api/Contents
+        // POST: api/Users
         [HttpPost]
-        public async Task<IActionResult> PostContent([FromBody] Content content)
+        public async Task<IActionResult> PostUser([FromBody] User user)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Contents.Add(content);
+            _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetContent", new { id = content.ContentId }, content);
+            return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
-        // DELETE: api/Contents/5
+        // DELETE: api/Users/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteContent([FromRoute] int id)
+        public async Task<IActionResult> DeleteUser([FromRoute] string id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var content = await _context.Contents.FindAsync(id);
-            if (content == null)
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
             {
                 return NotFound();
             }
 
-            _context.Contents.Remove(content);
+            _context.Users.Remove(user);
             await _context.SaveChangesAsync();
 
-            return Ok(content);
+            return Ok(user);
         }
 
-        private bool ContentExists(int id)
+        private bool UserExists(string id)
         {
-            return _context.Contents.Any(e => e.ContentId == id);
+            return _context.Users.Any(e => e.Id == id);
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using net.benbenng.wwwapi;
+using net.benbenng.wwwapi.Models;
 
 namespace net.benbenng.wwwapi.Controllers
 {
